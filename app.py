@@ -127,12 +127,12 @@ from routes.dashboard_routes import dashboard_bp
 from routes.application_routes import application_bp
 from routes.resume_strength_routes import resume_strength_bp
 from routes.manager_routes import manager_bp
-from routes.proctor_routes import proctor_bp
+#from routes.proctor_routes import proctor_bp
 
 
 
 
-app.register_blueprint(proctor_bp)
+#app.register_blueprint(proctor_bp)
 app.register_blueprint(manager_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(dashboard_bp)
@@ -149,7 +149,10 @@ def not_found(e):
 def server_error(e):
     return jsonify({"error": "Internal server error"}), 500
 
-
+print("MONGO_URI:", os.getenv("MONGO_URI"))
+print("SUPABASE_URL:", os.getenv("SUPABASE_URL"))
+print("SUPABASE_KEY:", os.getenv("SUPABASE_KEY"))
+print("OPENAI_API_KEY:", os.getenv("OPENAI_API_KEY"))
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
