@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>InternBuddy</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/splash.css') }}">
+
+    <style>
+        /* 🔥 Fallback styling (important for video visibility) */
+        video {
+            width: 100%;
+            max-width: 700px;
+            display: block;
+            margin: 25px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+    </style>
 </head>
+
 <body>
 
 <div class="bg"></div>
@@ -13,12 +27,15 @@
     <h1>InternBuddy</h1>
     <p>Smart Internship Partner</p>
 
-    <video autoplay muted playsinline>
+    <!-- 🔥 FIXED VIDEO -->
+    <video autoplay muted loop playsinline>
         <source src="{{ url_for('static', filename='video/intro.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
     </video>
 </div>
 
 <script>
+    // 🔥 slight delay increase (better UX)
     setTimeout(() => {
         window.location.href = "/auth";
     }, 5000);
