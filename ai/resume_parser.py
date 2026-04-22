@@ -1,8 +1,13 @@
 import pdfplumber
 from docx import Document
-import pytesseract
 from PIL import Image
 import os
+
+try:
+    import pytesseract
+    OCR_AVAILABLE = True
+except:
+    OCR_AVAILABLE = False
 
 
 def extract_resume_text(file_path):
@@ -15,10 +20,8 @@ def extract_resume_text(file_path):
             for page in pdf.pages:
                 text += page.extract_text() or ""
 
-        # OCR fallback for scanned PDFs
-        if text.strip():
-            return text
-        else:
+        # OCR fallback
+        if not text.strip() and OCR_AVAILABLE:
             images = []
             with pdfplumber.open(file_path) as pdf:
                 for page in pdf.pages:
@@ -30,11 +33,16 @@ def extract_resume_text(file_path):
 
             return ocr_text
 
+        return text
+
     # ---------- DOCX ----------
     if ext == ".docx":
         doc = Document(file_path)
         return "\n".join(p.text for p in doc.paragraphs)
 
     # ---------- IMAGE ----------
-    img = Image.open(file_path)
-    return pytesseract.image_to_string(img)
+    if OCR_AVAILABLE:
+        img = Image.open(file_path)
+        return pytesseract.image_to_string(img)
+
+    return "OCR not available on server"
