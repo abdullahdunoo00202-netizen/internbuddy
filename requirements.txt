@@ -9,3 +9,5 @@ pymongo
 supabase
 pdfplumber
 python-docx
+sentence-transformers
+torch
