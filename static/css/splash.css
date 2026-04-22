@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+/* BODY (important fix for layout issues) */
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
 /* ANIMATED BACKGROUND */
 .bg {
     position: fixed;
@@ -37,6 +43,7 @@
     align-items: center;
     color: white;
     text-align: center;
+    padding: 20px;
 }
 
 /* PROJECT NAME */
@@ -44,8 +51,10 @@
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
+/* SUBTITLE */
 .content p {
     margin-bottom: 20px;
     font-size: 16px;
@@ -54,8 +63,22 @@
 
 /* VIDEO */
 video {
-    width: 380px;
+    width: 420px;
     max-width: 90%;
     border-radius: 16px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;   /* 🔥 important fix */
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .content h1 {
+        font-size: 32px;
+    }
+
+    video {
+        width: 300px;
+    }
 }
