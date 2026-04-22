@@ -1,0 +1,9 @@
+Flask
+flask-pymongo
+flask-bcrypt
+flask-jwt-extended
+flask-mail
+python-dotenv
+gunicorn
+pymongo
+supabase

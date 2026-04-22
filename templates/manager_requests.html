@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager Requests</title>
+
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <link rel="stylesheet" href="/static/css/manager_dashboard.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Smart Internship Partner</h2>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="/manager/dashboard">Dashboard</a></li>
+            <li class="active"><a href="/manager/requests">Requests</a></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <div class="top-bar">
+            <h2>Student Requests</h2>
+        </div>
+
+        <div class="page-container">
+            <div id="requestsGrid" class="applications-grid">
+                <p>Loading requests...</p>
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="/static/js/manager_requests.js"></script>
+</body>
+</html>

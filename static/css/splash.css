@@ -1,0 +1,61 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ANIMATED BACKGROUND */
+.bg {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        -45deg,
+        #36d1dc,
+        #5b86e5,
+        #8e2de2,
+        #4a00e0
+    );
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    z-index: -1;
+}
+
+/* GRADIENT ANIMATION */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* CENTER CONTENT */
+.content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* PROJECT NAME */
+.content h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* VIDEO */
+video {
+    width: 380px;
+    max-width: 90%;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}

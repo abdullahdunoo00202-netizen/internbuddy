@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Result</title>
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>InternBuddy Test Result</h2>
+
+    <div id="resultBox">
+        Loading...
+    </div>
+</div>
+
+<script>
+const sessionId = "{{ session_id }}";
+
+fetch(`/api/result/${sessionId}`)
+.then(res => res.json())
+.then(data => {
+    document.getElementById("resultBox").innerHTML = `
+        <h3>Score: ${data.score}</h3>
+        <h3>Percentage: ${data.percentage}%</h3>
+        <h3>Status: ${data.status}</h3>
+    `;
+});
+</script>
+
+</body>
+</html>

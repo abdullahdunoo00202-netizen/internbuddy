@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InternBuddy | Student Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <style>
+        /* Additional styles for the application counter */
+        .application-counter {
+            background: linear-gradient(135deg, rgba(54, 209, 220, 0.15), rgba(91, 134, 229, 0.15));
+            padding: 20px 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(54, 209, 220, 0.3);
+            margin-top: 25px;
+            margin-bottom: 30px;
+            display: inline-block;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .application-counter h4 {
+            margin: 0 0 10px 0;
+            color: #a0e7ff;
+            font-size: 18px;
+        }
+        
+        .counter-number {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #36d1dc, #5b86e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 5px;
+        }
+        
+        .counter-total {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .counter-note {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+            max-width: 300px;
+            line-height: 1.4;
+        }
+        
+        .welcome-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .welcome-stats-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .application-counter {
+                padding: 15px 20px;
+                width: 100%;
+            }
+            
+            .counter-number {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BACKGROUND ANIMATION -->
+<div class="background-animation"></div>
+
+<!-- MAIN CONTAINER -->
+<div class="dashboard-container">
+
+    <!-- NAVIGATION HEADER -->
+    <nav class="dashboard-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>InternBuddy</h1>
+            </div>
+            <div class="nav-tagline">Smart Internship Platform</div>
+        </div>
+        
+        <div class="nav-right">
+            <!-- ✅ CHANGE #1: Fixed My Applications link -->
+            <a href="/student/my-applications" class="nav-btn">
+                <i class="fas fa-file-alt"></i> My Applications
+            </a>
+            <button class="nav-btn logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <!-- WELCOME BANNER -->
+    <section class="welcome-banner">
+        <div class="welcome-content">
+            <h2>Welcome Back, <span class="student-name">Student!</span></h2>
+            <p class="welcome-text">Ready to boost your career with real-world experience? Explore our internship programs below.</p>
+            
+            <!-- ✅ CHANGE #3: Applications count display - Now properly styled -->
+            <div class="application-counter">
+                <h4>Your Application Status</h4>
+                <div>
+                    <span class="counter-number" id="appCount">0</span>
+                    <span class="counter-total">/ 2</span>
+                </div>
+                <p class="counter-note">
+                    You can apply to maximum 2 internships. 
+                    Manage your applications from "My Applications".
+                </p>
+            </div>
+            
+            <div class="banner-stats">
+                <div class="stat-card">
+                    <i class="fas fa-briefcase"></i>
+                    <div>
+                        <h3>50+</h3>
+                        <p>Companies</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-user-graduate"></i>
+                    <div>
+                        <h3>500+</h3>
+                        <p>Students Placed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <h3>95%</h3>
+                        <p>Success Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="welcome-illustration">
+            <img src="/static/images/internship1.svg" alt="Student Dashboard">
+        </div>
+    </section>
+
+    <!-- QUICK ACTIONS -->
+    <section class="quick-actions">
+        <div class="section-header">
+            <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
+            <p class="section-subtitle">Get started with your internship journey</p>
+        </div>
+        <div class="action-grid">
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Explore Programs</h3>
+                <p>Browse all available internship domains</p>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-file-upload"></i>
+                </div>
+                <h3>Upload Resume</h3>
+                <p>Update your profile for better matches</p>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Schedule Interview</h3>
+                <p>Book mock interviews with experts</p>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h3>Get Help</h3>
+                <p>24/7 support for your queries</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED INTERNSHIPS -->
+    <section class="featured-section">
+        <div class="section-header">
+            <h2><i class="fas fa-star"></i> Featured Internships</h2>
+            <p class="section-subtitle">Most popular programs among students</p>
+        </div>
+
+        <div class="internship-grid">
+            <!-- ML Card -->
+            <div class="internship-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="card-badge">Hot</div>
+                </div>
+                <h3 class="card-title">Machine Learning</h3>
+                <p class="card-description">
+                    Master Python, data preprocessing, ML algorithms, and deploy real-world models with industry projects.
+                </p>
+                <div class="card-details">
+                    <span><i class="fas fa-clock"></i> 12 Weeks</span>
+                    <span><i class="fas fa-users"></i> Mentor Support</span>
+                    <span><i class="fas fa-certificate"></i> Certificate</span>
+                </div>
+                <div class="card-skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">NLP</span>
+                </div>
+                <!-- Apply link will be controlled by JS -->
+                <a href="/apply/ml" class="apply-link">
+                    Apply Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Computer Vision Card -->
+            <div class="internship-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="card-badge">Trending</div>
+                </div>
+                <h3 class="card-title">Computer Vision</h3>
+                <p class="card-description">
+                    Learn image processing, OpenCV, face detection, and build AI-powered vision systems.
+                </p>
+                <div class="card-details">
+                    <span><i class="fas fa-clock"></i> 10 Weeks</span>
+                    <span><i class="fas fa-users"></i> 1:1 Sessions</span>
+                    <span><i class="fas fa-certificate"></i> Certificate</span>
+                </div>
+                <div class="card-skills">
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Deep Learning</span>
+                </div>
+                <a href="/apply/cv" class="apply-link">
+                    Apply Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Web Development Card -->
+            <div class="internship-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="card-badge">Popular</div>
+                </div>
+                <h3 class="card-title">Web Development</h3>
+                <p class="card-description">
+                    Full-stack development with React, Node.js, MongoDB. Build complete web applications.
+                </p>
+                <div class="card-details">
+                    <span><i class="fas fa-clock"></i> 14 Weeks</span>
+                    <span><i class="fas fa-users"></i> Code Reviews</span>
+                    <span><i class="fas fa-certificate"></i> Certificate</span>
+                </div>
+                <div class="card-skills">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                </div>
+                <a href="/apply/web" class="apply-link">
+                    Apply Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALL INTERNSHIP DOMAINS -->
+    <section class="domains-section">
+        <div class="section-header">
+            <h2><i class="fas fa-layer-group"></i> All Internship Domains</h2>
+            <p class="section-subtitle">Choose from our specialized tracks</p>
+        </div>
+
+        <div class="domains-grid">
+            <!-- Machine Learning -->
+            <div class="domain-card">
+                <div class="domain-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="domain-content">
+                    <h3>Machine Learning</h3>
+                    <p>Master ML algorithms and real-world projects</p>
+                    <div class="domain-meta">
+                        <span><i class="fas fa-calendar"></i> 12 Weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Beginner Friendly</span>
+                    </div>
+                </div>
+                <a href="/apply/ml" class="domain-apply-btn">
+                    Apply <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Computer Vision -->
+            <div class="domain-card">
+                <div class="domain-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="domain-content">
+                    <h3>Computer Vision</h3>
+                    <p>Image processing and AI vision systems</p>
+                    <div class="domain-meta">
+                        <span><i class="fas fa-calendar"></i> 10 Weeks</span>
+                        <span><i class="fas fa-chart-line"></i> Intermediate</span>
+                    </div>
+                </div>
+                <a href="/apply/cv" class="domain-apply-btn">
+                    Apply <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Web Development -->
+            <div class="domain-card">
+                <div class="domain-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="domain-content">
+                    <h3>Web Development</h3>
+                    <p>Full-stack MERN development</p>
+                    <div class="domain-meta">
+                        <span><i class="fas fa-calendar"></i> 14 Weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Beginner Friendly</span>
+                    </div>
+                </div>
+                <a href="/apply/web" class="domain-apply-btn">
+                    Apply <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Deep Learning -->
+            <div class="domain-card">
+                <div class="domain-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="domain-content">
+                    <h3>Deep Learning</h3>
+                    <p>Advanced neural networks and AI models</p>
+                    <div class="domain-meta">
+                        <span><i class="fas fa-calendar"></i> 16 Weeks</span>
+                        <span><i class="fas fa-chart-line"></i> Advanced</span>
+                    </div>
+                </div>
+                <a href="/apply/dl" class="domain-apply-btn">
+                    Apply <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Data Science -->
+            <div class="domain-card">
+                <div class="domain-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="domain-content">
+                    <h3>Data Science</h3>
+                    <p>Data analysis and visualization</p>
+                    <div class="domain-meta">
+                        <span><i class="fas fa-calendar"></i> 12 Weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Beginner Friendly</span>
+                    </div>
+                </div>
+                <a href="/apply/ds" class="domain-apply-btn">
+                    Apply <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Development -->
+            <div class="domain-card">
+                <div class="domain-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="domain-content">
+                    <h3>Mobile Development</h3>
+                    <p>iOS & Android app development</p>
+                    <div class="domain-meta">
+                        <span><i class="fas fa-calendar"></i> 14 Weeks</span>
+                        <span><i class="fas fa-chart-line"></i> Intermediate</span>
+                    </div>
+                </div>
+                <a href="/apply/mobile" class="domain-apply-btn">
+                    Apply <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="benefits-section">
+        <div class="section-header">
+            <h2><i class="fas fa-trophy"></i> Why Choose InternBuddy?</h2>
+            <p class="section-subtitle">Our unique advantages for students</p>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Expert Mentors</h3>
+                <p>Learn from industry professionals with 5+ years experience</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Real Projects</h3>
+                <p>Work on live projects from our partner companies</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Certification</h3>
+                <p>Get industry-recognized certificates upon completion</p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Job Assistance</h3>
+                <p>100% placement support with our hiring partners</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="dashboard-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>InternBuddy</h3>
+                <p class="footer-tagline">Building Future Tech Leaders</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Programs</h4>
+                    <a href="#">Machine Learning</a>
+                    <a href="#">Computer Vision</a>
+                    <a href="#">Web Development</a>
+                    <a href="#">Deep Learning</a>
+                </div>
+
+                <div class="link-group">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+
+                <div class="link-group">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Partners</a>
+                    <a href="#">Blog</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 InternBuddy. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Add this script directly for application limit checking -->
+<script>
+// ✅ CHANGE #2: Application limit checker
+async function checkApplicationLimit() {
+    const token = localStorage.getItem("token");
+
+    try {
+        const res = await fetch("/api/my-applications-count", {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const data = await res.json();
+
+        if (data.count >= 2) {
+            // Disable all Apply Now buttons
+            document.querySelectorAll(".apply-link, .domain-apply-btn")
+                .forEach(btn => {
+                    btn.innerText = "Limit Reached";
+                    btn.style.pointerEvents = "none";
+                    btn.style.opacity = "0.5";
+                    btn.style.background = "rgba(255, 255, 255, 0.1)";
+                    btn.style.cursor = "not-allowed";
+                });
+        }
+        
+        // ✅ CHANGE #3: Update application count display
+        document.getElementById("appCount").innerText = data.count;
+        
+    } catch (error) {
+        console.log("Could not check application limit:", error);
+        document.getElementById("appCount").innerText = "0";
+    }
+}
+
+// Load the main dashboard script
+document.addEventListener("DOMContentLoaded", function() {
+    // Call the limit checker after page loads
+    checkApplicationLimit();
+});
+</script>
+
+<script src="/static/js/student_dashboard.js"></script>
+</body>
+</html>

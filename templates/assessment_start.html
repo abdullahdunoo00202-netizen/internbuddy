@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InternBuddy – Pre Assessment</title>
+    <link rel="stylesheet" href="/static/css/assessment.css">
+</head>
+<body>
+
+<div class="assessment-container">
+
+    <h2>InternBuddy Screening Test – Pre-Assessment</h2>
+
+    <!-- RULES -->
+    <div class="rules-box">
+        <label>
+            <input type="checkbox" id="acceptRules">
+            I agree to all rules & regulations
+        </label>
+    </div>
+
+    <!-- CNIC -->
+    <div class="cnic-box">
+        <input type="text" id="cnicInput" placeholder="Enter CNIC / ID Number">
+    </div>
+
+    <!-- CAMERA PREVIEW -->
+    <div class="camera-box">
+        <video id="cameraPreview" autoplay></video>
+        <button onclick="captureFace()">Capture Face</button>
+    </div>
+
+    <!-- SYSTEM CHECK -->
+    <div class="system-check">
+        <p id="cameraStatus">Camera: ❌</p>
+        <p id="micStatus">Microphone: ❌</p>
+        <p id="screenStatus">Screen Share: ❌</p>
+    </div>
+
+    <button id="startTestBtn" disabled>
+        Start Assessment
+    </button>
+
+</div>
+
+<script src="/static/js/assessment/precheck.js"></script>
+</body>
+</html>

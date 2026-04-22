@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internship Assigned</title>
+
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <link rel="stylesheet" href="/static/css/manager_dashboard.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Smart Internship Partner</h2>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="/manager/dashboard">Dashboard</a></li>
+            <li class="active"><a href="/manager/assigned-students">Internship Assigned</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="top-bar">
+            <h2>Assigned Internships</h2>
+        </div>
+
+        <div class="page-container">
+            <div id="assignedGrid" class="applications-grid">
+                <p>Loading assigned students...</p>
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="/static/js/manager_assigned.js"></script>
+</body>
+</html>

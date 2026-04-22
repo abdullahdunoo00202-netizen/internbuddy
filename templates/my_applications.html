@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Applications | Smart Internship Partner</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <link rel="stylesheet" href="/static/css/my_applications.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Additional alignment fixes */
+        .cards-wrapper {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .offer-card,
+        .request-card {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        @media (max-width: 768px) {
+            .cards-wrapper {
+                flex-direction: column;
+            }
+            
+            .offer-card,
+            .request-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- ================= HEADER ================= -->
+    <nav class="dashboard-nav">
+        <div class="nav-left">
+            <div class="project-title">
+                <h1>Smart Internship Partner</h1>
+                <span>AI-Powered Internship Partner</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="/student/dashboard" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Go to Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <!-- ================= MAIN ================= -->
+    <div class="container">
+
+        <!-- ===== PROFILE ===== -->
+        <div class="profile-card">
+            <img id="profilePic"
+                 src="/static/images/default-user.png"
+                 class="profile-pic"
+                 alt="Profile Picture">
+
+            <div class="profile-info">
+                <h2 id="studentName">Loading...</h2>
+                <p><strong>Email:</strong> <span id="studentEmail">Loading...</span></p>
+                <p><strong>CGPA:</strong> <span id="studentCgpa">Loading...</span></p>
+            </div>
+        </div>
+
+        <!-- ===== APPLICATIONS ===== -->
+        <div class="section-block">
+            <h3 class="section-title">My Internship Applications</h3>
+
+            <div id="applicationsGrid" class="applications-grid">
+                <p>Loading applications...</p>
+            </div>
+        </div>
+
+        <!-- ===== OFFERS + REQUESTS (SAME ROW PERFECT ALIGN) ===== -->
+        <div class="section-block">
+            <h3 class="section-title">
+                <i class="fas fa-briefcase"></i> Internship & Requests
+            </h3>
+
+            <div class="cards-wrapper">
+
+                <!-- OFFER CARD -->
+                <div class="application-card offer-card">
+                    <h4>InternBuddy Internship Offer</h4>
+
+                    <p class="offer-text">
+                        You can view and manage your internship offers here
+                    </p>
+
+                    <button class="start-test-btn" onclick="viewOffers()">
+                        <i class="fas fa-eye"></i> See Offers
+                    </button>
+                </div>
+
+                <!-- REQUEST CARD -->
+                <div class="application-card request-card">
+                    <h4>Submit Your Request</h4>
+
+                    <p class="request-text">
+                        You can submit your queries or request to take the test again
+                    </p>
+
+                    <button class="start-test-btn" onclick="sendRequest()">
+                        <i class="fas fa-paper-plane"></i> Send Request
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= SUCCESS POPUP ================= -->
+<div id="successPopup" class="popup">
+    <div class="popup-content">
+        <h2>🎉 Thank You!</h2>
+        <p>Your slot has been successfully selected.</p>
+        <p>Please check your email for details.</p>
+        <br>
+        <b>InternBuddy Team</b>
+    </div>
+</div>
+<!-- ================= JS ================= -->
+<script src="/static/js/my_applications.js"></script>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-content">
+        <p>© 2026 InternBuddy. All rights reserved.</p>
+
+        <div class="social-icons">
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-github"></i>
+            <i class="fab fa-instagram"></i>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

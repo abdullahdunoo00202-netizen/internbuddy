@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | InternBuddy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+
+<h2>InternBuddy – Register</h2>
+
+<form id="registerForm">
+    <input type="text" placeholder="Name" id="name" required>
+    <input type="email" placeholder="Email" id="email" required>
+    <input type="password" placeholder="Password (min 8 chars)" id="password" required>
+
+    <select id="role">
+        <option value="student">Student</option>
+        <option value="manager">Manager</option>
+    </select>
+
+    <button type="submit">Register</button>
+</form>
+
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+</body>
+</html>

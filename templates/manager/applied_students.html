@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internship Applied Students</title>
+
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <link rel="stylesheet" href="/static/css/manager_dashboard.css">
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="top-bar">
+    <button class="top-btn" onclick="location.href='/manager/dashboard'">
+        ⬅ Back to Dashboard
+    </button>
+
+    <h2>Internship Applied Students</h2>
+
+    <button class="top-btn logout" id="logoutBtn">
+        Logout
+    </button>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="page-container">
+
+    <div class="table-container">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>CGPA</th>
+                    <th>Domain</th>
+                    <th>Resume %</th>
+                    <th>Status</th>
+                    <th>CV</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="appliedTable">
+                <tr>
+                    <td colspan="9">Loading applications...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="/static/js/manager_applied_students.js"></script>
+</body>
+</html>

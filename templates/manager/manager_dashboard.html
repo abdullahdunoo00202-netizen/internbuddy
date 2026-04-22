@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager Dashboard | Smart Internship Partner</title>
+
+    <!-- SAME THEME -->
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <link rel="stylesheet" href="/static/css/manager_dashboard.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Additional custom styles for better layout */
+        .dashboard-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .dashboard-text {
+            flex: 1;
+        }
+        
+        .dashboard-text h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .dashboard-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .dashboard-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .dashboard-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 250px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .stat-card h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #a0e7ff;
+        }
+        
+        .stat-card p {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0;
+            color: white;
+        }
+        
+        /* Welcome card (old - keeping for compatibility) */
+        .welcome-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            color: white;
+            display: none; /* Hidden since we're using dashboard-main */
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-main {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>Smart Internship Partner</h2>
+        </div>
+
+        <!-- animation -->
+        <div class="sidebar-animation">
+            <img src="/static/images/internship2.svg" alt="Internship Animation">
+        </div>
+
+        <ul class="sidebar-menu">
+            <li class="active"><a href="/manager/dashboard">Dashboard</a></li>
+            <li><a href="/manager/registered-students">Registered Students</a></li>
+            <li><a href="/manager/applied-students">Internship Applied</a></li>
+            <li><a href="/manager/requests">Requests</a></li>
+            <li><a href="/manager/assigned-students">Internship Assigned</a></li>
+            <li><a href="/manager/accepted-students">Accepted Students</a></li>
+            <li><a href="/manager/interns">Interns</a></li>
+            <li><a href="/manager/completed-interns">Completed Interns</a></li>
+            <li><a href="/manager/rules">Rules & Regulations</a></li>
+            <li><a href="/manager/privacy">Privacy Policy</a></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="dark-mode">
+                <span>Dark Mode</span>
+                <input type="checkbox" id="darkToggle">
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+        
+        <!-- NEW DASHBOARD MAIN SECTION WITH TEXT AND IMAGE -->
+        <div class="dashboard-main">
+
+            <!-- LEFT TEXT -->
+            <div class="dashboard-text">
+                <h1>Welcome, Manager</h1>
+
+                <p>
+                    Manage internships, review applications, track students,
+                    and make decisions using InternBuddy Manager Panel.
+                </p>
+            </div>
+
+            <!-- RIGHT IMAGE -->
+            <div class="dashboard-image">
+                <img src="/static/images/internship2.svg" alt="Dashboard Illustration">
+            </div>
+
+        </div>
+
+        <!-- STATS GRID -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Registered Students</h3>
+                <p id="registeredCount">--</p>
+            </div>
+            <div class="stat-card">
+                <h3>Applied Students</h3>
+                <p id="appliedCount">--</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Interns</h3>
+                <p id="internsCount">--</p>
+            </div>
+            <div class="stat-card">
+                <h3>Completed Internships</h3>
+                <p id="completedCount">--</p>
+            </div>
+        </div>
+        
+    </main>
+
+</div>
+
+<script src="/static/js/manager_dashboard.js"></script>
+
+<script>
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('user_role');
+        window.location.href = '/login';
+    });
+    
+    // Dark mode toggle (optional)
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('change', function() {
+        document.body.classList.toggle('dark-mode-active');
+    });
+    
+    // Fetch stats data (you can implement this in your JS file)
+    async function loadStats() {
+        const token = localStorage.getItem('token');
+        
+        try {
+            const res = await fetch('/api/manager/stats', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            
+            if (res.ok) {
+                const data = await res.json();
+                document.getElementById('registeredCount').innerText = data.registered || '0';
+                document.getElementById('appliedCount').innerText = data.applied || '0';
+                document.getElementById('internsCount').innerText = data.activeInterns || '0';
+                document.getElementById('completedCount').innerText = data.completed || '0';
+            }
+        } catch (error) {
+            console.error('Error loading stats:', error);
+        }
+    }
+    
+    // Load stats when page loads
+    if (localStorage.getItem('token')) {
+        loadStats();
+    }
+</script>
+
+</body>
+</html>

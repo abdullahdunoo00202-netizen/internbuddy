@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InternBuddy | Application Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <style>
+        .application-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .application-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .application-header h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #a0e7ff;
+        }
+
+        .domain-highlight {
+            background: linear-gradient(45deg, #36d1dc, #5b86e5);
+            padding: 10px 25px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-section h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #a0e7ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #36d1dc;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(54, 209, 220, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #36d1dc, #5b86e5);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(54, 209, 220, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .file-upload {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: #36d1dc;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 40px;
+            color: #a0e7ff;
+            margin-bottom: 15px;
+        }
+
+        .requirements {
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #36d1dc;
+        }
+
+        .requirements h4 {
+            margin-bottom: 15px;
+            color: #a0e7ff;
+        }
+
+        .requirements ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .requirements li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirements i {
+            color: #36d1dc;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #a0e7ff;
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 15px;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        select.form-control option {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        /* Image Upload Preview Styles */
+        .image-upload-container {
+            text-align: center;
+        }
+
+        /* FIXED: New image preview circle styles */
+        .image-preview-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px auto;
+            overflow: hidden;
+        }
+
+        .image-preview-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .image-placeholder i {
+            font-size: 50px;
+            opacity: 0.6;
+            margin-bottom: 10px;
+        }
+
+        .remove-image {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .remove-image:hover {
+            background: rgba(255, 0, 0, 0.3);
+        }
+
+        /* FIXED: Resume file name display */
+        .resume-name {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #36d1dc;
+            font-weight: 500;
+        }
+
+        /* FIXED: Thank you message styles */
+        .thank-you {
+            text-align: center;
+            padding: 60px 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .thank-you i {
+            font-size: 80px;
+            color: #36d1dc;
+            margin-bottom: 25px;
+            animation: scaleIn 0.5s ease 0.2s both;
+        }
+
+        .thank-you h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #a0e7ff;
+        }
+
+        .thank-you p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .thank-you b {
+            color: #36d1dc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .application-container {
+                padding: 25px;
+                margin: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .image-preview-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .thank-you {
+                padding: 40px 20px;
+            }
+
+            .thank-you i {
+                font-size: 60px;
+            }
+
+            .thank-you h2 {
+                font-size: 28px;
+            }
+
+            .thank-you p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="background-animation"></div>
+
+<div class="dashboard-container">
+    <nav class="dashboard-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>InternBuddy</h1>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="/student/dashboard" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <div class="application-container">
+        <div class="application-header">
+            <h2>Internship Application</h2>
+            <p class="section-subtitle">Complete this form to apply for your chosen internship program</p>
+            <div class="domain-highlight" id="selectedDomain">
+                <i class="fas fa-laptop-code"></i> Internship form 
+            </div>
+        </div>
+
+        <a href="/student/dashboard" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+
+        <form id="applicationForm" enctype="multipart/form-data">
+            <!-- ✅ Hidden internship_id field -->
+            <input type="hidden" name="internship_id" value="{{ internship_id }}">
+            
+            <div class="form-grid">
+                <!-- Profile Picture -->
+                <div class="form-section">
+                    <h3><i class="fas fa-camera"></i> Profile Picture</h3>
+                    <div class="form-group image-upload-container">
+                        <!-- FIXED: Updated image preview container -->
+                        <div id="imagePreviewContainer" class="image-preview-container">
+                            <div class="image-placeholder" onclick="document.getElementById('profilePicture').click()">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Upload Photo</span>
+                            </div>
+                        </div>
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                        <small style="display: block; margin-top: 10px; opacity: 0.7;">
+                            Recommended: Square image, max 2MB, JPG/PNG format
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="student@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+1 (555) 123-4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="college">College/University</label>
+                        <input type="text" id="college" name="college" class="form-control" placeholder="Enter your institution" required>
+                    </div>
+                </div>
+
+                <!-- Education Details -->
+                <div class="form-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Education Details</h3>
+                    <div class="form-group">
+                        <label for="degree">Current Degree</label>
+                        <select id="degree" name="degree" class="form-control" required>
+                            <option value="">Select your degree</option>
+                            <option value="bachelor">Bachelor's Degree</option>
+                            <option value="master">Master's Degree</option>
+                            <option value="phd">PhD</option>
+                            <option value="diploma">Diploma</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="major">Major/Field of Study</label>
+                        <input type="text" id="major" name="major" class="form-control" placeholder="Computer Science, Engineering, etc." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="graduationYear">Expected Graduation Year</label>
+                        <input type="number" id="graduationYear" name="graduationYear" class="form-control" placeholder="2024" min="2023" max="2030" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cgpa">CGPA/Percentage</label>
+                        <input type="text" id="cgpa" name="cgpa" class="form-control" placeholder="e.g., 3.5/4.0 or 85%" required>
+                    </div>
+                </div>
+
+                <!-- Skills & Experience -->
+                <div class="form-section">
+                    <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                    <div class="form-group">
+                        <label for="skills">Relevant Skills</label>
+                        <textarea id="skills" name="skills" class="form-control" placeholder="List your technical skills (Python, Java, React, etc.)" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Previous Experience</label>
+                        <textarea id="experience" name="experience" class="form-control" placeholder="Describe any previous internships, projects, or relevant experience"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="github">GitHub Profile</label>
+                        <input type="url" id="github" name="github" class="form-control" placeholder="https://github.com/yourusername">
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile</label>
+                        <input type="url" id="linkedin" name="linkedin" class="form-control" placeholder="https://linkedin.com/in/yourprofile">
+                    </div>
+                </div>
+
+                <!-- Application Details -->
+                <div class="form-section">
+                    <h3><i class="fas fa-file-alt"></i> Application Details</h3>
+                    <div class="form-group">
+                        <label for="availability">Availability (Hours/Week)</label>
+                        <select id="availability" name="availability" class="form-control" required>
+                            <option value="">Select your availability</option>
+                            <option value="10-15">10-15 hours/week</option>
+                            <option value="15-20">15-20 hours/week</option>
+                            <option value="20-25">20-25 hours/week</option>
+                            <option value="25+">25+ hours/week</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Preferred Start Date</label>
+                        <input type="date" id="startDate" name="startDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="whyInternship">Why do you want this internship?</label>
+                        <textarea id="whyInternship" name="whyInternship" class="form-control" placeholder="Explain your interest and what you hope to achieve..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="resume">Upload Resume (PDF/DOC)</label>
+                        <div class="file-upload" onclick="document.getElementById('resume').click()">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <p>Click to upload your resume</p>
+                            <p style="font-size: 12px; opacity: 0.7;">Max file size: 5MB</p>
+                            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" style="display: none;" onchange="showResumeName(this)">
+                        </div>
+                        <!-- FIXED: Resume file name display -->
+                        <span id="resumeFileName" class="resume-name"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requirements">
+                <h4><i class="fas fa-clipboard-check"></i> Requirements & Notes</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> All fields marked with * are required</li>
+                    <li><i class="fas fa-check"></i> Profile picture should be professional and clear</li>
+                    <li><i class="fas fa-check"></i> Make sure your resume is updated and relevant</li>
+                    <li><i class="fas fa-check"></i> You'll receive a confirmation email within 24 hours</li>
+                    <li><i class="fas fa-check"></i> Our team will review your application and contact you</li>
+                </ul>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='/student/dashboard'">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Submit Application
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Get domain from URL
+    const domain = "{{ domain }}";
+
+    // Domain mapping
+    const domains = {
+        'ml': { name: 'Machine Learning', icon: 'fas fa-brain' },
+        'cv': { name: 'Computer Vision', icon: 'fas fa-eye' },
+        'web': { name: 'Web Development', icon: 'fas fa-code' },
+        'dl': { name: 'Deep Learning', icon: 'fas fa-network-wired' },
+        'ds': { name: 'Data Science', icon: 'fas fa-chart-bar' },
+        'mobile': { name: 'Mobile Development', icon: 'fas fa-mobile-alt' }
+    };
+
+    // Update domain display
+    const selectedDomain = domains[domain] || domains['ml'];
+    const domainElement = document.getElementById('selectedDomain');
+    domainElement.innerHTML = `
+        <i class="${selectedDomain.icon}"></i> ${selectedDomain.name} Internship
+    `;
+
+    // FIXED: Image preview function
+    function previewImage(event) {
+        const input = event.target;
+        const container = document.getElementById('imagePreviewContainer');
+        
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                container.innerHTML = `
+                    <img src="${e.target.result}" alt="Profile Preview">
+                    <button type="button" class="remove-image" onclick="removeImage()">
+                        <i class="fas fa-times"></i> Remove Image
+                    </button>
+                `;
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // FIXED: Remove image function
+    function removeImage() {
+        const container = document.getElementById('imagePreviewContainer');
+        const fileInput = document.getElementById('profilePicture');
+        
+        container.innerHTML = `
+            <div class="image-placeholder" onclick="document.getElementById('profilePicture').click()">
+                <i class="fas fa-user-circle"></i>
+                <span>Upload Photo</span>
+            </div>
+        `;
+        
+        // Reset file input
+        fileInput.value = '';
+    }
+
+    // FIXED: Resume file name display function
+    function showResumeName(input) {
+        const fileNameDisplay = document.getElementById('resumeFileName');
+        if (input.files.length > 0) {
+            fileNameDisplay.textContent = `Selected file: ${input.files[0].name}`;
+            fileNameDisplay.style.color = '#36d1dc';
+        } else {
+            fileNameDisplay.textContent = '';
+        }
+    }
+
+    // Form validation
+    function validateForm() {
+        // Check file sizes
+        const profilePic = document.getElementById('profilePicture').files[0];
+        const resume = document.getElementById('resume').files[0];
+        
+        if (profilePic && profilePic.size > 2 * 1024 * 1024) { // 2MB limit
+            alert('Profile picture must be less than 2MB');
+            return false;
+        }
+        
+        if (resume && resume.size > 5 * 1024 * 1024) { // 5MB limit
+            alert('Resume must be less than 5MB');
+            return false;
+        }
+        
+        // Check image type
+        if (profilePic) {
+            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+            if (!validTypes.includes(profilePic.type)) {
+                alert('Please upload an image in JPG, PNG, or GIF format');
+                return false;
+            }
+        }
+        
+        // Check required resume
+        if (!resume) {
+            alert('Please upload your resume');
+            return false;
+        }
+        
+        return true;
+    }
+
+    // UPDATED FORM SUBMISSION HANDLER
+    document.getElementById('applicationForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // ✅ Validate form first
+        if (!validateForm()) return;
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("You need to be logged in. Redirecting to login...");
+            window.location.href = "/login";
+            return;
+        }
+
+        // 🔥 MANUAL FORMDATA (NO FormData(this))
+        const formData = new FormData();
+
+        // ✅ IMPORTANT (FROM BACKEND TEMPLATE)
+        formData.append("internship_id", "{{ internship_id }}");
+        formData.append("domain", "{{ domain }}");
+
+        // ✅ TEXT FIELDS
+        formData.append("fullName", document.getElementById("fullName").value);
+        formData.append("email", document.getElementById("email").value);
+        formData.append("phone", document.getElementById("phone").value);
+        formData.append("college", document.getElementById("college").value);
+        formData.append("degree", document.getElementById("degree").value);
+        formData.append("major", document.getElementById("major").value);
+        formData.append("graduationYear", document.getElementById("graduationYear").value);
+        formData.append("cgpa", document.getElementById("cgpa").value);
+        formData.append("skills", document.getElementById("skills").value);
+        formData.append("experience", document.getElementById("experience").value);
+        formData.append("github", document.getElementById("github").value);
+        formData.append("linkedin", document.getElementById("linkedin").value);
+        formData.append("availability", document.getElementById("availability").value);
+        formData.append("startDate", document.getElementById("startDate").value);
+        formData.append("whyInternship", document.getElementById("whyInternship").value);
+
+        // ✅ FILES
+        const resume = document.getElementById("resume").files[0];
+        const profilePic = document.getElementById("profilePicture").files[0];
+
+        if (resume) formData.append("resume", resume);
+        if (profilePic) formData.append("profilePicture", profilePic);
+
+        // 🔄 UI: loading state
+        const submitBtn = this.querySelector('.btn-primary');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        submitBtn.disabled = true;
+
+        try {
+            const res = await fetch("/apply", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                body: formData
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                // ✅ SUCCESS UI
+                document.querySelector('.application-container').innerHTML = `
+                    <div class="thank-you">
+                        <i class="fas fa-check-circle"></i>
+                        <h2>Thank You!</h2>
+                        <p>
+                            Your application has been submitted successfully.<br>
+                            You can track it from <b>My Applications</b> on the dashboard.
+                        </p>
+                        <button onclick="window.location.href='/student/dashboard'" class="btn btn-primary">
+                            <i class="fas fa-th-large"></i> Go to Dashboard
+                        </button>
+                    </div>
+                `;
+            } else {
+                // ❌ ERROR HANDLING
+                if (data.error && data.error.includes("maximum 2")) {
+                    alert("❌ You can apply only to 2 internships.");
+                    window.location.href = "/student/dashboard";
+                } else {
+                    alert(data.error || "Something went wrong. Please try again.");
+                }
+
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Network error. Please try again.");
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('startDate').min = today;
+
+    // Initialize form
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Application form loaded");
+    });
+</script>
+</body>
+</html>

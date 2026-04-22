@@ -1,0 +1,58 @@
+.request-card-main {
+    max-width: 700px;
+    margin: 50px auto;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.request-card-main h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 30px;
+}
+
+/* ===== FORM ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+label {
+    color: #fff;
+    font-size: 14px;
+}
+
+input, textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* BUTTON */
+.submit-btn {
+    margin-top: 15px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}

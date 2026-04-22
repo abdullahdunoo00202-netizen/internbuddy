@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | InternBuddy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+
+<h2>InternBuddy – Login</h2>
+
+<form id="loginForm">
+    <input type="email" placeholder="Email" id="loginEmail" required>
+    <input type="password" placeholder="Password" id="loginPassword" required>
+    <button type="submit">Login</button>
+</form>
+
+<a href="/forgot-password">Forgot Password?</a>
+
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internship Offers</title>
+
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <link rel="stylesheet" href="/static/css/offers.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- HEADER -->
+    <nav class="dashboard-nav">
+        <h1>InternBuddy Offers</h1>
+
+        <a href="/student/my-applications" class="nav-btn">
+            Back
+        </a>
+    </nav>
+
+    <div class="container">
+
+        <h2 class="section-title">Your Internship Offers</h2>
+
+        <!-- OFFERS WILL COME FROM JS -->
+        <div id="offersGrid" class="applications-grid">
+            <p>Loading offers...</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/static/js/offers.js"></script>
+
+</body>
+</html>

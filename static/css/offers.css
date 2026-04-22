@@ -1,0 +1,141 @@
+/* ===== OFFER CARD ===== */
+.offer-card-box {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    border-left: 6px solid #36d1dc;
+}
+
+.offer-card-box:hover {
+    transform: translateY(-6px);
+}
+
+/* ===== TEXT ===== */
+.offer-card-box h4 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.offer-card-box p {
+    color: rgba(255,255,255,0.85);
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+/* STATUS */
+.status {
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* ===== BUTTONS CONTAINER ===== */
+.offer-btns {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ===== COMMON BUTTON STYLE ===== */
+.offer-btns button {
+    min-width: 120px;
+}
+
+/* ACCEPT BUTTON */
+.btn-accept {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00c9a7, #36d1dc);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-accept:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 201, 167, 0.4);
+}
+
+/* REJECT BUTTON */
+.btn-reject {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ff6a6a, #ff4757);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-reject:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 71, 87, 0.4);
+}
+
+/* ===== ACCEPTED BOX ===== */
+.accepted-box {
+    margin-top: 24px;
+    padding: 20px 18px;
+    border-radius: 14px;
+    background: rgba(0,255,150,0.12);
+    border: 1px solid rgba(0,255,150,0.35);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+/* TEXT */
+.accepted-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: #00ffb3;
+}
+
+.accepted-sub {
+    font-size: 13px;
+    margin-top: 6px;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* ===== LMS BUTTON ===== */
+.lms-btn {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 11px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+
+    background: linear-gradient(135deg, #00c6ff, #5f6cff);
+    transition: all 0.3s ease;
+}
+
+.lms-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(95,108,255,0.4);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

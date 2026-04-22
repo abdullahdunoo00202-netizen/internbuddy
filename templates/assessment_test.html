@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InternBuddy – Assessment</title>
+    <link rel="stylesheet" href="/static/css/assessment.css">
+</head>
+<body>
+
+<div class="assessment-wrapper">
+
+    <h2>InternBuddy Screening Test</h2>
+
+    <div id="timer">
+        Time Remaining: <span id="timeLeft">01:45:00</span>
+    </div>
+
+    <!-- ================= MCQs ================= -->
+    <section id="mcqSection">
+        <h3>MCQs (20)</h3>
+        <div id="mcqContainer"></div>
+    </section>
+
+    <!-- ================= WRITTEN ================= -->
+    <section id="writtenSection">
+        <h3>Written Questions (5)</h3>
+        <div id="writtenContainer"></div>
+    </section>
+
+    <!-- ================= ORAL ================= -->
+    <section id="oralSection">
+        <h3>Oral Questions (5)</h3>
+        <div id="oralContainer"></div>
+    </section>
+
+    <button id="submitTestBtn">
+        Submit Assessment
+    </button>
+
+</div>
+
+<script>
+    const SESSION_ID = "{{ session_id }}";
+</script>
+<script src="/static/js/assessment/proctor_core.js"></script>
+<script src="/static/js/assessment/mcq.js"></script>
+<script src="/static/js/assessment/written.js"></script>
+<script src="/static/js/assessment/oral.js"></script>
+</body>
+</html>

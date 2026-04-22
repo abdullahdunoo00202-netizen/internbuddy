@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Request | InternBuddy</title>
+
+    <link rel="stylesheet" href="/static/css/student_dashboard.css">
+    <link rel="stylesheet" href="/static/css/request.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- ===== HEADER ===== -->
+    <nav class="dashboard-nav">
+        <div class="nav-left">
+            <div class="project-title">
+                <h1>Smart Internship Partner</h1>
+                <span>AI-Powered Internship Partner</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <a href="/student/my-applications" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </nav>
+
+    <!-- ===== MAIN ===== -->
+    <div class="container">
+
+        <div class="request-card-main">
+
+            <h2>Submit Your Request</h2>
+
+            <p class="subtitle">
+                If you are facing any issue or your test was cancelled, you can submit a request here.
+            </p>
+
+            <!-- ===== FORM ===== -->
+            <form id="requestForm">
+
+                <label>Subject</label>
+                <input type="text" id="subject" placeholder="Enter subject..." required>
+
+                <label>Write Your Application</label>
+                <textarea id="message" rows="6" placeholder="Write your request..." required></textarea>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Request
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/static/js/request.js"></script>
+
+</body>
+</html>
