@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/splash.css') }}">
 
     <style>
-        /* 🔥 Fallback styling (important for video visibility) */
         video {
             width: 100%;
             max-width: 700px;
@@ -27,18 +26,24 @@
     <h1>InternBuddy</h1>
     <p>Smart Internship Partner</p>
 
-    <!-- 🔥 FIXED VIDEO -->
-    <video autoplay muted loop playsinline>
-        <source src="{{ url_for('static', filename='video/intro.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
+    <!-- ✅ DEBUG + FINAL VIDEO -->
+    <video id="introVideo" muted playsinline controls>
+        <source src="/static/video/intro.mp4" type="video/mp4">
     </video>
 </div>
 
 <script>
-    // 🔥 slight delay increase (better UX)
+    const video = document.getElementById("introVideo");
+
+    // 🔥 Jab video load ho jaye → autoplay force karo
+    video.oncanplay = () => {
+        video.play().catch(() => {});
+    };
+
+    // 🔥 Safe redirect (video ko time milta hai)
     setTimeout(() => {
         window.location.href = "/auth";
-    }, 5000);
+    }, 8000);   // 🔥 8 seconds
 </script>
 
 </body>
